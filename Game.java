@@ -44,7 +44,7 @@ public class Game
         itemroom = new Room("in a special item's room");
         lizard = new Room("in the lizard's room");
         subboss = new Room("in the subboss's room");
-        boss = new Room("in the boss's room");
+        boss = new Room("in the boss's room, Prepare for the battle");
         
         // initialise room exits
         entrance.setExits(foyer,null ,null ,null );

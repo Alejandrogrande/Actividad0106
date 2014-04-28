@@ -47,13 +47,13 @@ public class Game
         boss = new Room("in the boss's room, Prepare for the battle");
         
         // initialise room exits
-        entrance.setExits(foyer,null ,null ,null );
-        foyer.setExits(null, lizard, entrance, skeleton);
-        skeleton.setExits(null, foyer, null, itemroom);
-        itemroom.setExits(null, skeleton, null, null);
-        lizard.setExits(subboss, null, null, foyer);
-        subboss.setExits(null ,null ,lizard , boss);
-        boss.setExits(null,subboss,null ,null);
+        entrance.setExits(foyer,null ,null ,null, null);
+        foyer.setExits(null, null, entrance, skeleton, lizard);
+        skeleton.setExits(null, foyer, null, itemroom, null);
+        itemroom.setExits(null, skeleton, null, null, null);
+        lizard.setExits(subboss, null, null, foyer, null);
+        subboss.setExits(null ,null ,lizard , boss, null);
+        boss.setExits(null,subboss,null ,null, null);
 
         currentRoom = entrance;  // start game outside
     }
@@ -161,7 +161,9 @@ public class Game
         if(direction.equals("west")) {
             nextRoom = currentRoom.westExit;
         }
-
+        if(direction.equals("south-east")) {
+            nextRoom = currentRoom.southEastExit;
+        }
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
@@ -205,6 +207,9 @@ public class Game
             }
             if(currentRoom.westExit != null) {
                 System.out.print("west ");
+            }
+            if(currentRoom.southEastExit != null) {
+                System.out.print("southEast ");
             }
             System.out.println();
     }

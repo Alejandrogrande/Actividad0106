@@ -31,26 +31,31 @@ public class Game
 
     /**
      * Create all the rooms and link their exits together.
+     * Mazmorra para que el heroe derrote al mounstruo
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room entrance,foyer,skeleton,itemroom,lizard,subboss,boss;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        entrance = new Room("outside the main entrance of the dungeon");
+        foyer = new Room("in a foyer");
+        skeleton = new Room("in the skeletons room");
+        itemroom = new Room("in a special item's room");
+        lizard = new Room("in the lizard's room");
+        subboss = new Room("in the subboss's room");
+        boss = new Room("in the boss's room");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        entrance.setExits(foyer,null ,null ,null );
+        foyer.setExits(null, lizard, entrance, skeleton);
+        skeleton.setExits(null, foyer, null, itemroom);
+        itemroom.setExits(null, skeleton, null, null);
+        lizard.setExits(subboss, null, null, foyer);
+        subboss.setExits(null ,null ,lizard , boss);
+        boss.setExits(null,subboss,null ,null);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = entrance;  // start game outside
     }
 
     /**

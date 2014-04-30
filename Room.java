@@ -14,12 +14,12 @@
  */
 public class Room 
 {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
-    public Room southEastExit;
+    private String description;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
+    private Room southEastExit;
 
     /**
      * Create a room described "description". Initially, it has
@@ -52,7 +52,7 @@ public class Room
         if(west != null)
             westExit = west;
         if(southEast != null)
-        southEastExit = southEast;
+            southEastExit = southEast;
     }
 
     /**
@@ -63,4 +63,53 @@ public class Room
         return description;
     }
 
+    /**
+     * getExit que tome como parámetro una cadena que represente una dirección
+     * y devuelva el objeto de la clase Room asociado a esa salida o null si no hay salida.
+     */
+    public Room getExit(String direction){
+        Room nextRoom = null;
+        if(direction.equals("north")) {
+            nextRoom = northExit;
+        }
+        if(direction.equals("east")) {
+            nextRoom = eastExit;
+        }
+        if(direction.equals("south")) {
+            nextRoom = southExit;
+        }
+        if(direction.equals("west")) {
+            nextRoom = westExit;
+        }
+        if(direction.equals("south-east")) {
+            nextRoom = southEastExit;
+        }
+        return nextRoom;
+    }
+
+    /**
+     * Return a description of the room's exits.
+     * For example: "Exits: north east west"
+     *
+     * @ return A description of the available exits.
+     */
+    public String getExitString(){
+        String exitDescription = "Exits: ";
+            if(northExit != null) {
+                exitDescription += "north ";
+            }
+            if(eastExit != null) {
+                exitDescription += "east ";
+            }
+            if(southExit != null) {
+                exitDescription += "south ";
+            }
+            if(westExit != null) {
+                exitDescription += "west ";
+            }
+            if(southEastExit != null) {
+                exitDescription += "southEast ";
+            }
+        return exitDescription;
+    }
 }

@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -36,7 +36,7 @@ public class Game
     private void createRooms()
     {
         Room entrance,foyer,skeleton,itemroom,lizard,subboss,boss;
-      
+
         // create the rooms
         entrance = new Room("outside the main entrance of the dungeon");
         foyer = new Room("in a foyer");
@@ -45,27 +45,27 @@ public class Game
         lizard = new Room("in the lizard's room");
         subboss = new Room("in the subboss's room");
         boss = new Room("in the boss's room, Prepare for the battle");
-      
+
         // initialise room exits
         //Al haber cambiado el metodo setExit ahora se tienen que especificar cada salida
         //en cada habitacion
         entrance.setExit("north", foyer);
-        
+
         foyer.setExit("south",entrance);
         foyer.setExit("west",skeleton);
         foyer.setExit("southEast",lizard);
-        
+
         skeleton.setExit("east",foyer);
         skeleton.setExit("west",itemroom);
-        
+
         itemroom.setExit("east", skeleton);
-        
+
         lizard.setExit("northWest",foyer);
         lizard.setExit("north",subboss);
-        
+
         subboss.setExit("south",lizard);
         subboss.setExit("west", boss);
-        
+
         boss.setExit("east",subboss);
 
         currentRoom = entrance;  // start game outside
@@ -80,7 +80,7 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -163,7 +163,7 @@ public class Game
         // Try to leave current room.
         Room nextRoom = null;
         nextRoom = currentRoom.getExit(direction);
-        
+
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
@@ -188,14 +188,11 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
-    
-    
+
     /**
-     * metodo para evitar la repericion de codigo absurdamente
+     * metodo para evitar la repeticion de codigo absurdamente
      */
     private void printLocationInfo(){
-        System.out.println("You are " + currentRoom.getDescription());
-            System.out.println(currentRoom.getExitString());
-            System.out.println();
+        System.out.println(currentRoom.getLongDescription());
     }
 }

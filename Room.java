@@ -32,7 +32,7 @@ public class Room
         exits = new HashMap<>(); //Se inicializa el HashMap
         //Notacion diamante para no especificar el tipo de objeto que se utiliza
     }
-    
+
     /**
      * Define an exit from this room.
      * @param direction The direction of the exit.
@@ -40,9 +40,9 @@ public class Room
      */
     public void setExit(String direction, Room nextRoom)
     {
-            exits.put(direction, nextRoom);
+        exits.put(direction, nextRoom);
     }
-    
+
     /**
      * @return The description of the room.
      */
@@ -67,13 +67,23 @@ public class Room
      */
     public String getExitString(){
         Set<String> namesOfDirections = exits.keySet();
-        String exitsDescription = "Exit ";
+        String exitsDescription = "Exit: ";
         for(String direction : namesOfDirections){
             exitsDescription += direction + " ";
         }
-        
+
         return exitsDescription;
     }
 
-    
+    /**
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'
+     *     Exits: north west southwest
+     * @return A description of the room, including exits.
+     */
+    public String getLongDescription(){
+        String descripcion = "You are in the " + getDescription() +"\n"+ getExitString() ;
+        return descripcion;
+    }
+
 }

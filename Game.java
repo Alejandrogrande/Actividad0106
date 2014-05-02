@@ -45,15 +45,28 @@ public class Game
         lizard = new Room("in the lizard's room");
         subboss = new Room("in the subboss's room");
         boss = new Room("in the boss's room, Prepare for the battle");
-        
+      
         // initialise room exits
-        entrance.setExits(foyer,null ,null ,null, null,null);
-        foyer.setExits(null, null, entrance, skeleton, lizard,null);
-        skeleton.setExits(null, foyer, null, itemroom, null,null);
-        itemroom.setExits(null, skeleton, null, null, null,null);
-        lizard.setExits(null, null, null, foyer, null,subboss);
-        subboss.setExits(null ,null ,lizard , boss, null,null);
-        boss.setExits(null,subboss,null ,null, null,null);
+        //Al haber cambiado el metodo setExit ahora se tienen que especificar cada salida
+        //en cada habitacion
+        entrance.setExit("north", foyer);
+        
+        foyer.setExit("south",entrance);
+        foyer.setExit("west",skeleton);
+        foyer.setExit("southEast",lizard);
+        
+        skeleton.setExit("east",foyer);
+        skeleton.setExit("west",itemroom);
+        
+        itemroom.setExit("east", skeleton);
+        
+        lizard.setExit("northWest",foyer);
+        lizard.setExit("north",subboss);
+        
+        subboss.setExit("south",lizard);
+        subboss.setExit("west", boss);
+        
+        boss.setExit("east",subboss);
 
         currentRoom = entrance;  // start game outside
     }

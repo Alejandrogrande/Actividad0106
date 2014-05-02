@@ -47,13 +47,13 @@ public class Game
         boss = new Room("in the boss's room, Prepare for the battle");
         
         // initialise room exits
-        entrance.setExits(foyer,null ,null ,null, null);
-        foyer.setExits(null, null, entrance, skeleton, lizard);
-        skeleton.setExits(null, foyer, null, itemroom, null);
-        itemroom.setExits(null, skeleton, null, null, null);
-        lizard.setExits(subboss, null, null, foyer, null);
-        subboss.setExits(null ,null ,lizard , boss, null);
-        boss.setExits(null,subboss,null ,null, null);
+        entrance.setExits(foyer,null ,null ,null, null,null);
+        foyer.setExits(null, null, entrance, skeleton, lizard,null);
+        skeleton.setExits(null, foyer, null, itemroom, null,null);
+        itemroom.setExits(null, skeleton, null, null, null,null);
+        lizard.setExits(null, null, null, foyer, null,subboss);
+        subboss.setExits(null ,null ,lizard , boss, null,null);
+        boss.setExits(null,subboss,null ,null, null,null);
 
         currentRoom = entrance;  // start game outside
     }

@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -55,26 +56,7 @@ public class Room
      * y devuelva el objeto de la clase Room asociado a esa salida o null si no hay salida.
      */
     public Room getExit(String direction){
-        Room nextRoom = null;
-        if(direction.equals("north")) {
-            nextRoom = exits.get("north");
-        }
-        if(direction.equals("east")) {
-            nextRoom = exits.get("east");
-        }
-        if(direction.equals("south")) {
-            nextRoom = exits.get("south");
-        }
-        if(direction.equals("west")) {
-            nextRoom = exits.get("west");
-        }
-        if(direction.equals("southEast")) {
-            nextRoom = exits.get("southEast");
-        }
-        if(direction.equals("northWest")) {
-            nextRoom = exits.get("northWest");
-        }
-        return nextRoom;
+        return exits.get(direction);
     }
 
     /**
@@ -84,26 +66,13 @@ public class Room
      * @ return A description of the available exits.
      */
     public String getExitString(){
-        String exitDescription = "Exits: ";
-        if(exits.get("north") != null) {
-            exitDescription += "north ";
+        Set<String> namesOfDirections = exits.keySet();
+        String exitsDescription = "Exit ";
+        for(String direction : namesOfDirections){
+            exitsDescription += direction + " ";
         }
-        if(exits.get("east") != null) {
-            exitDescription += "east ";
-        }
-        if(exits.get("south") != null) {
-            exitDescription += "south ";
-        }
-        if(exits.get("west") != null) {
-            exitDescription += "west ";
-        }
-        if(exits.get("southEast") != null) {
-            exitDescription += "southEast ";
-        }
-        if(exits.get("northWest") !=null) {
-            exitDescription += "northWest ";
-        }
-        return exitDescription;
+        
+        return exitsDescription;
     }
 
     

@@ -66,9 +66,9 @@ public class Parser
     /**
      * Metodo para devolver los comandos validos que introducir opcion A
      */
-    public CommandWords imprCommands(){
-        System.out.println("0116 Opcion A");
-        return commands;
+    public void imprCommands(){
+        System.out.println("0116 Opcion B");
+        commands.showAll();
     }
     
 }

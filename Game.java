@@ -98,6 +98,7 @@ public class Game
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
+        System.out.println("Type 'look' to look current Position");
         System.out.println();
         printLocationInfo();
     }
@@ -146,7 +147,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("   go quit help look");
     }
 
     /** 
@@ -193,7 +194,7 @@ public class Game
     }
 
     /**
-     * metodo para evitar la repeticion de codigo absurdamente
+     * metodo para expresar en el lugar que se esta en un determinado momento
      */
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());

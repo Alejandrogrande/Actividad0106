@@ -62,4 +62,13 @@ public class Parser
             return new Command(null, word2); 
         }
     }
+    
+    /**
+     * Metodo para devolver los comandos validos que introducir opcion A
+     */
+    public CommandWords imprCommands(){
+        System.out.println("0116 Opcion A");
+        return commands;
+    }
+    
 }

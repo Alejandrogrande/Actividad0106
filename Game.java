@@ -38,13 +38,13 @@ public class Game
         Room entrance,foyer,skeleton,itemroom,lizard,subboss,boss;
 
         // create the rooms
-        entrance = new Room("outside the main entrance of the dungeon","candy",0.5);
-        foyer = new Room("in a foyer","leaf of paper",0.1);
-        skeleton = new Room("in the skeletons room","skeleton bone",2.0);
-        itemroom = new Room("in a special item's room","weapon demon's slayer",3.0);
-        lizard = new Room("in the lizard's room","scales",0.5);
-        subboss = new Room("in the subboss's room","subboss head",5.0);
-        boss = new Room("in the boss's room, Prepare for the battle","treasure",5.0);
+        entrance = new Room("outside the main entrance of the dungeon");
+        foyer = new Room("in a foyer");
+        skeleton = new Room("in the skeletons room");
+        itemroom = new Room("in a special item's room");
+        lizard = new Room("in the lizard's room");
+        subboss = new Room("in the subboss's room");
+        boss = new Room("in the boss's room, Prepare for the battle");
 
         // initialise room exits
         //Al haber cambiado el metodo setExit ahora se tienen que especificar cada salida
@@ -67,7 +67,15 @@ public class Game
         subboss.setExit("west", boss);
 
         boss.setExit("east",subboss);
-
+        
+        entrance.addItem(new Item("candy",0.5));
+        foyer.addItem(new Item( "leaf of paper",0.1));
+        skeleton.addItem(new Item("skeleton bone",2.0));
+        itemroom.addItem(new Item( "weapon demon's slayer",3.0));
+        lizard.addItem(new Item("scales",0.5));
+        subboss.addItem(new Item("subboss head",5.0));
+        boss.addItem(new Item( "treasure",5.0));
+        
         currentRoom = entrance;  // start game outside
     }
 

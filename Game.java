@@ -19,7 +19,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-
+    private Room  lastRoom;
+    
     /**
      * Create the game and initialise its internal map.
      */
@@ -67,7 +68,7 @@ public class Game
         subboss.setExit("west", boss);
 
         boss.setExit("east",subboss);
-        
+
         entrance.addItem(new Item("candy",0.5));
         foyer.addItem(new Item( "leaf of paper",0.1));
         skeleton.addItem(new Item("skeleton bone",2.0));
@@ -75,8 +76,9 @@ public class Game
         lizard.addItem(new Item("scales",0.5));
         subboss.addItem(new Item("subboss head",5.0));
         boss.addItem(new Item( "treasure",5.0));
-        
+
         currentRoom = entrance;  // start game outside
+        lastRoom = null; //no hay ninguna localizacion previa
     }
 
     /**
@@ -138,6 +140,9 @@ public class Game
         else if(commandWord.equals("look")){
             printLocationInfo();
         }
+        else if (commandWord.equals("back")){
+            back();
+        }
         else if(commandWord.equals("eat")){
             eat();
         }
@@ -183,6 +188,7 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
+            lastRoom = currentRoom;
             currentRoom = nextRoom;
             printLocationInfo();
         }
@@ -210,11 +216,19 @@ public class Game
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());
     }
-    
+
     /**
      * El personaje come
      */
     private void eat(){
         System.out.println("You have eaten now and you are not hungry any more");
+    }
+    
+    /**
+     * El personaje retrocede a la anterior habitacion
+     */
+    private void back(){
+        currentRoom = lastRoom;
+        printLocationInfo();
     }
 }
